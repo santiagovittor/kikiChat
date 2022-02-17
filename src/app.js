@@ -14,7 +14,7 @@ io.on('connection',(socket)=>{
     socket.broadcast.emit('newUser')
     
     socket.on('message',data=>{
-        log.push(data);
+        log.unshift(data);
         io.emit('log',log);
     })
     socket.on('registered',data=>{

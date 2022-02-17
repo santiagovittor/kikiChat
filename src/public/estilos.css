@@ -1,0 +1,99 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+.mainContainer {
+    display: grid;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    background: url("https://cdn.wallpaperhub.app/cloudcache/f/3/c/2/e/3/f3c2e35f53a14438e14b3ef9449fbd1b41b2225a.jpg")
+        center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.chatBox {
+    display: grid;
+    min-height: 75vh;
+    min-width: 50vh;
+    opacity: 0.7;
+    transition: .5s;
+    width: fit-content;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: .5rem;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.chatBox:hover{
+    opacity: 1;
+    transition: .5s;
+    border-radius: 1rem;
+}
+
+.chatbox h1{
+    display: grid;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.chatBox__messages{
+    display: grid;
+    background-color: white;
+    min-height: 30vh;
+    max-height: 40vh;
+    color: black;
+    text-align: start;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.chatBox__inputContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+#chatBoxInput, #chatBoxColor{
+    height: 2rem;
+}
+
+.inlineMessage{
+    text-transform: uppercase;
+}

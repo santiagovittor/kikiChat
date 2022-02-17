@@ -1,12 +1,21 @@
 const socket = io();
 let user;
-let chatBox = document.getElementById('chatBox');
+let chatBox = document.getElementById('chatBoxInput');
+let inputColor = document.getElementById('chatBoxColor');
+let textColor = "";
+
+
+inputColor.addEventListener('change',(e)=>{
+
+    textColor = e.target.value;
+})
+
 Swal.fire({
     title:"Identifícate",
     input:"text",
     text:"Ingresa el nombre de usuario que utilizarás en el chat",
     inputValidator: (value)=>{
-        return !value && "¡Necesitas identificarte para poder usar el chat! >:("
+        return !value && "!!PERO DECIME QUIEN SOS CARAJO!!"
     },
     allowOutsideClick:false
 }).then(result=>{
@@ -25,22 +34,23 @@ chatBox.addEventListener('keyup',(evt)=>{
 })
 
 //SOCKETS
+
 socket.on('newUser',(data)=>{
 
-    //alert("New user");
+    alert("New user");
     
-    // Swal.fire({
-    //     icon:"success",
-    //     text:"Usuario nuevo conectado",
-    //     toast:true,
-    //     position:"top-right",
-    // })
+    Swal.fire({
+        icon:"success",
+        text:"Usuario nuevo conectado",
+        toast:true,
+        position:"top-right",
+    })
 })
 socket.on('log',data=>{
     let log = document.getElementById('log')
     let messages = "";
     data.forEach(message=>{
-        messages  = messages+ `${message.user} dice: ${message.message}</br>`;
+        messages  = messages+ `<p style="color:${textColor};">${message.user}: ${message.message}</p></br>`;
     })
     log.innerHTML = messages;
 })
