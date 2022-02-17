@@ -1,44 +1,46 @@
 const socket = io();
-let chatBox = document.getElementById('chatBox')
 let user;
-
+let chatBox = document.getElementById('chatBox');
 Swal.fire({
-    title:"Identificate",
+    title:"Identifícate",
     input:"text",
-    text:"Ingresa el nombre de usuario que utilizaras en el chat",
-    inputValidator:(value)=>{
-        return !value && "Necesitas identificarte para poder usar el chat! =<"
+    text:"Ingresa el nombre de usuario que utilizarás en el chat",
+    inputValidator: (value)=>{
+        return !value && "¡Necesitas identificarte para poder usar el chat! >:("
     },
     allowOutsideClick:false
 }).then(result=>{
     user=result.value;
+    socket.emit('registered',user);
 })
 
 chatBox.addEventListener('keyup',(evt)=>{
+
     if(evt.key==="Enter"){
         if(chatBox.value.trim().length>0){
-            socket.emit('message',{user:user,message:chatBox.value})
-            chatBox.value=""
+            socket.emit('message',{user:user,message:chatBox.value.trim()})
+            chatBox.value="";
         }
     }
 })
 
-//sockets
-
+//SOCKETS
 socket.on('newUser',(data)=>{
-    Swal.fire({
-        icon:'success',
-        text:'Nuevo usuario conectado',
-        toast:true,
-        position:"top-right"
-    })
-})
 
+    //alert("New user");
+    
+    // Swal.fire({
+    //     icon:"success",
+    //     text:"Usuario nuevo conectado",
+    //     toast:true,
+    //     position:"top-right",
+    // })
+})
 socket.on('log',data=>{
-    let log = document.getElementById('log');
+    let log = document.getElementById('log')
     let messages = "";
     data.forEach(message=>{
-        message = messages+ `${message.user} dice ${message.message}`;
+        messages  = messages+ `${message.user} dice: ${message.message}</br>`;
     })
     log.innerHTML = messages;
 })
