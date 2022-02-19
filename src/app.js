@@ -7,12 +7,13 @@ const server = app.listen(PORT,()=>console.log(`Listening on PORT ${PORT}`))
 const io = new Server(server);
 
 let log = [];
+
 app.use(express.static(__dirname+'/public'))
 
 
 io.on('connection',(socket)=>{
     socket.broadcast.emit('newUser')
-    
+
     socket.on('message',data=>{
         log.unshift(data);
         io.emit('log',log);

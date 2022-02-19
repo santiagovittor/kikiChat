@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./estilos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./favicon.ico" sizes="16x16">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap" rel="stylesheet">
     <title>kikiChat</title>
 </head>
+
 <body>
     <section class="mainContainer">
-    <div class="chatBox">
-        <h1>kikiChat</h1>
-        <div class="chatBox__messages">
-        <p id="log"></p>
+        <div class="chatBox">
+            <h1>kikiChat</h1>
+            <button type="button" id="logInButton">Iniciar sesión</button>
+            <p id="activeVisitors">
+
+            </p>
+            <div class="chatBox__messages">
+                <p id="log"></p>
+            </div>
+            <div class="chatBox__inputContainer">
+                <input id="chatBoxInput" placeholder="Presiona enter para enviar" maxlength="40" autofocus>
+                <button type="button" id="chatBoxButton">Enviar</button>
+                <input id="chatBoxColor" value="#000000" class="input-color" type="color">
+            </div>
         </div>
-        <div class="chatBox__inputContainer">
-        <input id="chatBoxInput" placeholder="Press enter to send" autofocus>
-            <input id="chatBoxColor" value="#000000" class="input-color" type="color">
-          </div>         
-    </div>
-</section>
+    </section>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="index.js"></script>
 </body>
+
 </html>

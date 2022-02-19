@@ -1,3 +1,6 @@
+
+/*reset css*/
+
 html {
     box-sizing: border-box;
     font-size: 16px;
@@ -32,6 +35,10 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+
+
+
 .mainContainer {
     display: grid;
     min-height: 100vh;
@@ -90,10 +97,25 @@ img {
     justify-content: space-around;
 }
 
-#chatBoxInput, #chatBoxColor{
+#chatBoxInput, #chatBoxColor, #chatBoxButton, #logInButton{
     height: 2rem;
+    margin-right: 0.1rem;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #757575;
+    transition: 1s;
+    cursor: pointer;
 }
 
-.inlineMessage{
-    text-transform: uppercase;
+
+
+#chatBoxInput:hover,#chatBoxInput:focus, #chatBoxColor:hover, #chatBoxButton:hover, #logInButton:hover{
+    background-color: white;
+    color: black;
+    outline: none;
+    border-radius: 1vh;
+    transition: 1s;
 }
